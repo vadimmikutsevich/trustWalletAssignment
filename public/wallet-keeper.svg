@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+
+  <path
+    d="M32 4L52 12V30C52 43.09 43.23 54.98 32 60C20.77 54.98 12 43.09 12 30V12L32 4Z"
+    stroke="#3375FF"
+    stroke-width="4"
+    stroke-linejoin="round"
+    fill="#3375FF"
+  />
+
+  <path
+    d="M20 28L24 40L32 24L40 40L44 28"
+    stroke="#FFFFFF"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
