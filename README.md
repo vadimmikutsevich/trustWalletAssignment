@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+# Wallet Keeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React-based wallet manager that allows users to generate, store, and decrypt Ethereum-compatible wallets securely.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Generate and encrypt EVM-compatible wallets (Ethereum, BNB Chain, etc.)
+- 💾 Store encrypted wallets in `localStorage`
+- 🧾 View wallet list with testnet balance
+- 🔑 Reveal private key after password verification
+- ❌ Never store passwords or plaintext private keys
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** + **Vite**
+- **TypeScript**
+- **Zustand** for state management
+- **React Query** for data fetching
+- **Tailwind CSS** for styling
+- **Ethers.js** for wallet operations
+- **Vitest** + **Testing Library** for testing
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Scripts
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+| Command        | Description                   |
+| -------------- | ----------------------------- |
+| `pnpm dev`     | Start development server      |
+| `pnpm build`   | Type-check and build for prod |
+| `pnpm preview` | Preview the production build  |
+| `pnpm test`    | Run unit tests with Vitest    |
+| `pnpm lint`    | Run ESLint                    |
+| `pnpm format`  | Run Prettier formatter        |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📋 Requirements & Constraints
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Store only **encrypted wallets** (JSON) in `localStorage`
+- Do **not** persist user passwords
+- Do **not** store private keys in plaintext
+- Keep UI minimal (no UI kits)
+- Focus on architecture and test coverage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ✅ Testing
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Unit tests cover:
+
+- Wallet generation and encryption
+- Password validation
+- Private key decryption
+- Clipboard interactions
+- Custom hooks (`useBalance`)
+
+---
+
+This project was built as part of a **Frontend Engineer Technical Test**.
