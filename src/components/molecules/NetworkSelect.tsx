@@ -1,25 +1,26 @@
 import { useState } from 'react'
 import { Input } from '../atoms/Input'
-
-const networks = Array.from({ length: 1000 }, (_, i) => ({
-  id: i,
-  name: `Testnet #${i}`,
-}))
+import { networks } from '../../constants/networks'
+import { useWalletStore } from '../../store/walletStore'
 
 const ROW = 36
 const WINDOW = 16
+const OPTIONS = Object.values(networks)
 
 export function NetworkSelect() {
-  const [query, setQuery] = useState('')
-  const [selected, setSelected] = useState(networks[0])
+  const { networkId, setNetwork } = useWalletStore()
+
   const [open, setOpen] = useState(false)
-  const [scrollTop, setScrollTop] = useState(0)
+  const [query, setQuery] = useState('')
+  const [scroll, setScr] = useState(0)
+
+  const selected = networks[networkId]
 
   const filtered = query
-    ? networks.filter((n) => n.name.toLowerCase().includes(query.toLowerCase()))
-    : networks
+    ? OPTIONS.filter((n) => n.name.toLowerCase().includes(query.toLowerCase()))
+    : OPTIONS
 
-  const start = Math.floor(scrollTop / ROW)
+  const start = Math.floor(scroll / ROW)
   const slice = filtered.slice(start, start + WINDOW)
 
   return (
@@ -42,7 +43,7 @@ export function NetworkSelect() {
 
           <div
             style={{ maxHeight: ROW * WINDOW }}
-            onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
+            onScroll={(e) => setScr(e.currentTarget.scrollTop)}
             className="overflow-auto"
           >
             <div style={{ height: filtered.length * ROW }} className="relative">
@@ -50,14 +51,14 @@ export function NetworkSelect() {
                 <button
                   key={n.id}
                   onClick={() => {
-                    setSelected(n)
+                    setNetwork(n.id)
                     setOpen(false)
                     setQuery('')
                   }}
                   style={{ top: (start + i) * ROW, height: ROW }}
                   className={`absolute left-0 right-0 px-3 text-left text-sm
                     hover:bg-sky-blue/10 ${
-                      n.id === selected.id ? 'bg-royal-blue/10' : ''
+                      n.id === networkId ? 'bg-royal-blue/10' : ''
                     }`}
                 >
                   {n.name}
