@@ -11,6 +11,12 @@ export const networks = {
     rpc: import.meta.env.VITE_RPC_BSCTEST as string,
     explorer: 'https://testnet.bscscan.com',
   },
+  polygon: {
+    id: 'polygon',
+    name: 'Polygon PoS',
+    rpc: import.meta.env.VITE_RPC_POLYGON as string,
+    explorer: 'https://polygonscan.com',
+  },
 } as const
 
 export type NetworkId = keyof typeof networks
