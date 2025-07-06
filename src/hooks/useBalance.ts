@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { formatEther } from 'ethers'
-
-import { getProvider } from '../../utils/getProvider'
-import { useWalletStore } from '../../store/walletStore'
+import { getProvider } from '../utils/getProvider'
+import { useWalletStore } from '../store/walletStore'
 
 export function useBalance(address: `0x${string}`) {
   const networkId = useWalletStore((s) => s.networkId)

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { WalletActionsPanel } from './WalletActionsPanel'
 import { Spinner } from '../atoms/Spinner'
-import { useBalance } from '../hooks/useBalance'
+import { useBalance } from '../../hooks/useBalance'
 
 interface Props {
   walletId: string
