@@ -1,20 +1,10 @@
-import { WalletRow } from './/WalletRow'
-
-const mockWallets = [
-  {
-    id: '1',
-    address: '0x9d3F…6A42',
-    balance: '0.7314 ETH',
-  },
-  {
-    id: '2',
-    address: '0xA5cB…F1e9',
-    balance: '12.0012 ETH',
-  },
-]
+import { useWalletStore } from '../../store/walletStore'
+import { WalletRow } from './WalletRow'
 
 export function WalletList() {
-  if (!mockWallets.length) return <p>No wallets yet</p>
+  const wallets = useWalletStore((s) => s.wallets)
+
+  if (!wallets.length) return <p>No wallets yet</p>
 
   return (
     <table className="w-full text-sm">
@@ -25,8 +15,13 @@ export function WalletList() {
         </tr>
       </thead>
       <tbody>
-        {mockWallets.map((w) => (
-          <WalletRow key={w.id} address={w.address} balance={w.balance} />
+        {wallets.map((w) => (
+          <WalletRow
+            key={w.id}
+            address={w.address}
+            jsonPk={w.jsonPk}
+            walletId={w.id}
+          />
         ))}
       </tbody>
     </table>

@@ -19,7 +19,10 @@ export function Button({
           'bg-sky-blue text-white',
           disabled ? 'opacity-60 cursor-not-allowed' : 'hover:bg-royal-blue',
         ],
-        variant === 'secondary' && 'border text-gray-600 hover:bg-gray-50',
+        variant === 'secondary' && [
+          'border text-gray-600',
+          disabled ? 'opacity-60 cursor-not-allowed' : 'hover:bg-gray-50',
+        ],
         className,
       )}
       {...rest}
