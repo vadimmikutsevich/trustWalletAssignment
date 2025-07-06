@@ -10,7 +10,7 @@ vi.mock('ethers', async () => {
     ...actual,
     Wallet: {
       ...actual.Wallet,
-      fromEncryptedJson: vi.fn().mockImplementation((json, pw) => {
+      fromEncryptedJson: vi.fn().mockImplementation((_, pw) => {
         if (pw !== 'StrongPass123!') {
           throw new Error('Wrong password')
         }
