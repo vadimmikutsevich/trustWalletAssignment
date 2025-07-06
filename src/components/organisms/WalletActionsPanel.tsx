@@ -90,7 +90,7 @@ export function WalletActionsPanel({
               disabled={loading || password.length === 0}
               className="flex-1 flex items-center justify-center gap-2"
             >
-              {loading && <Spinner />} Show&nbsp;PK
+              {loading && <Spinner />} Show PK
             </Button>
             <Button variant="secondary" onClick={onClose}>
               Cancel
